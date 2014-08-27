@@ -19,6 +19,7 @@ public class OpenCloseURLInputStream implements Runnable {
 
     @Override
     public void run() {
+        System.out.println("DataHandler test on url: " + url.toString());
         DataHandler dh = new DataHandler(new URLDataSource(url));
         for (int i = 0; i < 10000; i++) {
             openClose(dh);
@@ -30,6 +31,11 @@ public class OpenCloseURLInputStream implements Runnable {
         try {
             in = dh.getInputStream();
             in.read();
+            try {
+                Thread.sleep(1000);
+            } catch (Exception ex) {
+
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {

@@ -27,8 +27,7 @@ public class InputStreamCloseTest {
         for (int i = 0; i < 40; i++) {
             exec.submit(new OpenCloseURLInputStream(url));
         }
-        Thread.sleep(1000);
-        exec.shutdownNow();
+        exec.shutdown();
         exec.awaitTermination(1, TimeUnit.DAYS);
     }
 
